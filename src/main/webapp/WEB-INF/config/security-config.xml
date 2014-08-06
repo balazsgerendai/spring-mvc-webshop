@@ -8,19 +8,22 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
-	<http auto-config="true">
-		<intercept-url pattern="/login.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-		<intercept-url pattern="/loginFailed.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-		<intercept-url pattern="/logout.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-		<intercept-url pattern="/**" access="ROLE_USER"/>
-		<form-login login-page="/login.html" authentication-failure-url="/loginFailed.html"/>
-		<logout logout-success-url="/home.html"/>
-	</http>
+	<http pattern="/resources/**" security="none" />
 	
+	<http auto-config="true" use-expressions="true">
+		<intercept-url pattern="/login.html" access="isAnonymous()"/>
+		<intercept-url pattern="/loginFailed.html" access="isAnonymous()"/>
+		<intercept-url pattern="/logout.html" access="isAnonymous()"/>
+		<intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
+		<form-login login-page="/login.html" authentication-failure-url="/loginFailed.html"/>
+		<logout logout-success-url="/"/>
+	</http>
+
+ 
 	<authentication-manager>
 		<authentication-provider>
 			<!-- <password-encoder hash="bcrypt" /> -->
-			<jdbc-user-service data-source-ref="dataSource"/>
+			<jdbc-user-service data-source-ref="dataSource" />
 		</authentication-provider>
 	
 	</authentication-manager>
