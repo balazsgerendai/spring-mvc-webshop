@@ -21,7 +21,7 @@
 	<nav>
 		<ul>
 			<li class="selected"><a href="/">Home</a></li>
-			<li><a href="#">Sales</a></li>
+			<li><a href="/jjp/sales/">Sales</a></li>
 			<li><a href="#">Sell</a></li>
 			<sec:authorize access="isAuthenticated()">
 				<li><a href="#">Budget(<sec:authentication property="principal.budget" />$)</a></li>
