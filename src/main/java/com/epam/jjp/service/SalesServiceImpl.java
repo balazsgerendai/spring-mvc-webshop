@@ -1,13 +1,9 @@
 package com.epam.jjp.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.epam.jjp.model.Items;
 import com.epam.jjp.model.Sales;
-import com.epam.jjp.repositories.ItemsRepository;
 import com.epam.jjp.repositories.SalesRepository;
 
 @Service("salesService")

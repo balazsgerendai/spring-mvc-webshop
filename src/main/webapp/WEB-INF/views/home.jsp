@@ -12,7 +12,6 @@
 			<header>
 				<h2>Look at us in pictures</h2>
 			</header>
-
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
 				do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
 				enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
@@ -21,7 +20,6 @@
 		<section>
 			<h1>
 				Hello world!
-				<sec:authentication property="name" />
 			</h1>
 			
 		</section>

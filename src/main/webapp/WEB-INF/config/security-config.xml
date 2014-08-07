@@ -19,20 +19,15 @@
 		<logout logout-success-url="/"/>
 	</http>
 
- 
+ 	<beans:bean id="UserServiceImpl" class="com.epam.jjp.service.UserServiceImpl" />
+ 	
+ 	
 	<authentication-manager>
-		<authentication-provider>
+		<authentication-provider user-service-ref="UserServiceImpl">
 			<!-- <password-encoder hash="bcrypt" /> -->
-			<jdbc-user-service data-source-ref="dataSource" />
+			<!-- <jdbc-user-service data-source-ref="dataSource" />  -->
 		</authentication-provider>
 	
 	</authentication-manager>
-
-	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<beans:property name="url" value="jdbc:mysql://localhost:3306/webshop" />
-		<beans:property name="username" value="root" />
-		<beans:property name="password" value="root" />
-	</beans:bean>
 	
 </beans:beans>

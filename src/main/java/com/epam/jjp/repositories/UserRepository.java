@@ -3,12 +3,12 @@ package com.epam.jjp.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.epam.jjp.model.User;
+import com.epam.jjp.model.Customer;
 
 
 @Repository("usersRepository")
-public interface UsersRepository extends JpaRepository<User, String>{
+public interface UserRepository extends JpaRepository<Customer, String>{
     
-    User findByUsername(String username);
+    Customer findByUsername(String username);
     
 }

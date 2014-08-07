@@ -1,8 +1,8 @@
 package com.epam.jjp.service;
 
-import com.epam.jjp.model.User;
+import com.epam.jjp.model.Customer;
 
 public interface UsersService {
-    User save(User user);
-    User find(String username);
+    Customer save(Customer user);
+    Customer find(String username);
 }

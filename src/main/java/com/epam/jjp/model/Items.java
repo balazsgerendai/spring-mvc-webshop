@@ -34,7 +34,7 @@ public class Items {
 
     @ManyToOne
     @JoinColumn(name="sellerUsername", insertable = false, updatable = false)
-    private User users;
+    private Customer users;
 
     public String getName() {
         return name;
@@ -84,11 +84,11 @@ public class Items {
         this.sellerUsername = sellerUsername;
     }
     
-    public User getUsers() {
+    public Customer getUsers() {
         return users;
     }
     
-    public void setUsers(User users) {
+    public void setUsers(Customer users) {
         this.users = users;
     }
 }

@@ -26,7 +26,7 @@ public class Sales {
     
     @ManyToOne
     @JoinColumn(name="buyerUsername")
-    private User users;
+    private Customer users;
     
 
     public Long getId() {
@@ -53,11 +53,11 @@ public class Sales {
         this.itemId = itemId;
     }
 
-    public User getUsers() {
+    public Customer getUsers() {
         return users;
     }
 
-    public void setUsers(User users) {
+    public void setUsers(Customer users) {
         this.users = users;
     }
     
