@@ -19,7 +19,7 @@
 		</section>
 		<section>
 			<h1>
-				Hello world!
+				Hello world! <sec:authentication property="name"/>
 			</h1>
 			
 		</section>

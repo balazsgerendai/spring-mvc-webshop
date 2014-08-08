@@ -21,7 +21,6 @@ public class Authorities {
     @JoinColumn(name="username", insertable = false, updatable = false)
     private Customer customer;
     
-    
     public String getUsername() {
         return username;
     }

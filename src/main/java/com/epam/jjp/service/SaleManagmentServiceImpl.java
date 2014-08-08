@@ -2,8 +2,11 @@ package com.epam.jjp.service;
 
 import java.util.List;
 
-import org.neo4j.cypher.internal.compiler.v2_0.untilMatched;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.epam.jjp.model.Items;
@@ -12,6 +15,7 @@ import com.epam.jjp.repositories.ItemsRepository;
 import com.epam.jjp.repositories.SalesRepository;
 @Service("saleManagmentService")
 public class SaleManagmentServiceImpl implements SaleManagmentService {
+    
     @Autowired
     ItemsRepository itemsRepository;
     @Autowired
@@ -57,4 +61,8 @@ public class SaleManagmentServiceImpl implements SaleManagmentService {
         return salesRepository.findAll();
     }
 
+    public Page<Items> getItems(Integer pageNumber) {
+        PageRequest request = new PageRequest(pageNumber - 1, 10, Sort.Direction.DESC, "id");
+        return itemsRepository.findAll(request);
+    }
 }

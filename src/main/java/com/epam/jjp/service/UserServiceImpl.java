@@ -1,11 +1,9 @@
 package com.epam.jjp.service;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.neo4j.cypher.internal.compiler.v2_1.ast.rewriters.useAliasesInSortSkipAndLimit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,6 +18,7 @@ import com.epam.jjp.repositories.UserRepository;
 
 @Service("usersService")
 public class UserServiceImpl implements UsersService, UserDetailsService {
+    
     @Autowired
     private UserRepository userRepository;
 
@@ -53,6 +52,7 @@ public class UserServiceImpl implements UsersService, UserDetailsService {
         result.setAccountNonLocked(true);
         result.setCredentialsNonExpired(true);
         result.setAuthorities(getGrantedAuthorities(domainUser.getEntityAuthorities()));
+        
         result.setBudget(domainUser.getBudget());
 
         return result;

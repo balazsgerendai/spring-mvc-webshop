@@ -4,16 +4,13 @@
 
 <html>
 <head>
-<title>Home</title>
+<title>Sales</title>
 </head>
 <body>
 	<div id="mainContent">
-
 		<section>
-			<h1>
-				Hello world!
-				<sec:authentication property="name" />
-			</h1>
+
+		<h1>Main Sales Site</h1>
 		</section>
 
 	</div>

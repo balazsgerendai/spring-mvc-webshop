@@ -2,6 +2,9 @@ package com.epam.jjp.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.epam.jjp.model.Items;
 import com.epam.jjp.model.Sales;
 
@@ -15,5 +18,5 @@ public interface SaleManagmentService {
     Sales findSale(Long id);
     List<Items> findAllItems();
     List<Sales> findAllSales();
-    
+    Page<Items> getItems(Integer pageNumber);
 }
