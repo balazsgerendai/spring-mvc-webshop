@@ -8,10 +8,19 @@ $( document ).ready(function() {
 				url: "/sales/buy/"+id,
 				data: { itemId: id}
 			}).done(function( item ) {
-				alert( "Item bought: " + item.id +"\n"+
-						"Seller:" + item.sellerUsername);
-				button.parent().html("SOLD");
-				button.remove();
+				if(item.status !== undefined){
+					alert("You don't have enough money to buy it!");
+				}else{
+					alert( "Item bought: " + item.id +"\n"+
+							"Seller:" + item.sellerUsername);
+					var budget = parseInt($("#budget").html());
+					var itemPrice = parseInt(button.closest('tr').find(".item_price").html());
+					button.parent().html("SOLD");
+					button.remove();
+					
+					$("#budget").html(budget-itemPrice);
+					alert(newBudget);
+				}
 			});
 	});
 });

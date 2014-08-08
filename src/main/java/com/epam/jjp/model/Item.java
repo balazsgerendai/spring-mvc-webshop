@@ -31,7 +31,10 @@ public class Item {
     
     @Column(name="expirationDate")
     private Date expirationDate;
-
+    
+    @Column(name="sold")
+    private Boolean sold;
+    
     @ManyToOne
     @JoinColumn(name="sellerUsername", insertable = false, updatable = false)
     private Customer users;
@@ -91,4 +94,13 @@ public class Item {
     public void setUsers(Customer users) {
         this.users = users;
     }
+
+    public Boolean getSold() {
+        return sold;
+    }
+
+    public void setSold(Boolean sold) {
+        this.sold = sold;
+    }
+    
 }

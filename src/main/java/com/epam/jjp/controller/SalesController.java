@@ -34,6 +34,9 @@ public class SalesController {
 
     @Autowired
     private SaleManagmentService saleManagmentService;
+
+    @Autowired
+    private UserService userService;
     
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String sales(Model model) {
@@ -60,16 +63,25 @@ public class SalesController {
     @RequestMapping(value = "buy/{id}", method = RequestMethod.POST, produces="application/json")
     @ResponseBody public String buyItem(@PathVariable Long id) throws JsonGenerationException, JsonMappingException, IOException {
         ObjectMapper mapper = new ObjectMapper();
-        
+       
         Customer customer = (Customer)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Item sellingItem = saleManagmentService.findItem(id);
-
+        if(customer.getBudget() < sellingItem.getPrice()){
+            return "{\"status\":\"not enough money\"}";
+        }
         Sale sale = new Sale();
         sale.setItemId(id);
         sale.setSellerUsername(sellingItem.getSellerUsername());
         sale.setCustomer(customer);
-
+        
+        sellingItem.setSold(true);
+        
+        customer.setBudget(customer.getBudget() - sellingItem.getPrice());
+        
         saleManagmentService.saveSale(sale);
+        saleManagmentService.saveItem(sellingItem);
+        userService.save(customer);
+        
         return mapper.writeValueAsString(sale);
     }
 }

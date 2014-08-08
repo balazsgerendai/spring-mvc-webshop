@@ -24,7 +24,7 @@
 			<li><a href="/sales/">Sales</a></li>
 			<li><a href="#">Sell</a></li>
 			<sec:authorize access="isAuthenticated()">
-				<li><a href="#">Budget(<sec:authentication property="principal.budget" />$)</a></li>
+				<li><a href="#"><sec:authentication property="name"/>(<small id="budget"><sec:authentication property="principal.budget" /></small>$)</a></li>
 				<li>
 					<a href="/j_spring_security_logout">
 						<button type="submit" class="btn btn-default">

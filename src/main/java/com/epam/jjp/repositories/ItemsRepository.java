@@ -9,6 +9,5 @@ import com.epam.jjp.model.Item;
 @Repository("itemsRepository")
 public interface ItemsRepository extends JpaRepository<Item, Long>{
     
-    Page<Item> findByNameOrderByExpirationDateDesc(Pageable pageable);
     
 }
