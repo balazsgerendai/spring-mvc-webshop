@@ -24,6 +24,7 @@
 						<th>Expiration Date</th>
 						<th>Seller Name</th>
 						<th>Buy</th>
+						<th>Add to cart</th>
 					</tr>
 					<c:forEach var="item" items="${content}">
 						<tr>
@@ -37,6 +38,19 @@
 								<c:choose>
 									<c:when test="${not item.sold}">
 										<button id="buy_${item.id}" type="submit"
+											class="btn btn-default">
+												$
+										</button>
+									</c:when>
+									<c:otherwise>
+										<c:out value="SOLD"></c:out>
+									</c:otherwise>
+								</c:choose>
+							</td>
+							<td>
+								<c:choose>
+									<c:when test="${not item.sold}">
+										<button id="add_to_cart_${item.id}" type="submit"
 											class="btn btn-default">
 											<i class="glyphicon glyphicon-shopping-cart"></i>
 										</button>

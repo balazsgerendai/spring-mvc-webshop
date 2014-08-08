@@ -2,6 +2,7 @@ $( document ).ready(function() {
 
 	$( 'button[id^="buy_"]' ).on( "click", function() {
 		var button = $(this);
+
 		var id = button.attr("id").replace(/\D/g,'');
 		$.ajax({
 				type: "POST",
@@ -17,9 +18,9 @@ $( document ).ready(function() {
 					var itemPrice = parseInt(button.closest('tr').find(".item_price").html());
 					button.parent().html("SOLD");
 					button.remove();
-					
+					$("#add_to_cart_"+id).parent().html("SOLD");
+					$("#add_to_cart_"+id).remove();
 					$("#budget").html(budget-itemPrice);
-					alert(newBudget);
 				}
 			});
 	});
