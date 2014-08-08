@@ -32,16 +32,16 @@ public class Customer implements UserDetails {
     @Column(name = "budget")
     private int budget;
 
-    @OneToMany(mappedBy = "users",fetch = FetchType.EAGER, cascade=CascadeType.PERSIST)
-    private List<Sales> sales = new ArrayList<Sales>();
+    @OneToMany(mappedBy = "customer",fetch = FetchType.EAGER)
+    private List<Sale> sales = new ArrayList<Sale>();
     
     @OneToMany(mappedBy = "users",fetch = FetchType.EAGER)
-    private List<Items> items = new ArrayList<Items>();
+    private List<Item> items = new ArrayList<Item>();
     
     @Column(name="enabled")
     private boolean enabled;
 
-    @OneToMany(mappedBy = "customer",fetch = FetchType.EAGER, cascade=CascadeType.PERSIST)
+    @OneToMany(mappedBy = "customer",fetch = FetchType.EAGER)
     private List<Authorities> entityAuthorities = new ArrayList<Authorities>();
 
     
@@ -51,15 +51,15 @@ public class Customer implements UserDetails {
     @Transient private boolean credentialsNonExpired;
 
     
-    public List<Items> getItems() {
+    public List<Item> getItems() {
         return items;
     }
     
-    public void setItems(List<Items> items) {
+    public void setItems(List<Item> items) {
         this.items = items;
     }
 
-    public List<Sales> getSales() {
+    public List<Sale> getSales() {
         return sales;
     }
 
@@ -71,7 +71,7 @@ public class Customer implements UserDetails {
         this.entityAuthorities = entityAuthorities;
     }
 
-    public void setSales(List<Sales> sales) {
+    public void setSales(List<Sale> sales) {
         this.sales = sales;
     }
 

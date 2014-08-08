@@ -9,8 +9,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.epam.jjp.model.Items;
-import com.epam.jjp.model.Sales;
+import com.epam.jjp.model.Item;
+import com.epam.jjp.model.Sale;
 import com.epam.jjp.repositories.ItemsRepository;
 import com.epam.jjp.repositories.SalesRepository;
 @Service("saleManagmentService")
@@ -22,46 +22,46 @@ public class SaleManagmentServiceImpl implements SaleManagmentService {
     SalesRepository salesRepository;
 
     @Override
-    public Items saveItem(Items item) {
-        return itemsRepository.save(item);
+    public Item saveItem(Item item) {
+        return itemsRepository.saveAndFlush(item);
     }
 
     @Override
-    public Sales saveSale(Sales sale) {
-        return salesRepository.save(sale);
+    public Sale saveSale(Sale sale) {
+        return salesRepository.saveAndFlush(sale);
     }
 
     @Override
-    public void deleteItem(Items item) {
+    public void deleteItem(Item item) {
         itemsRepository.delete(item);
     }
 
     @Override
-    public void deleteSale(Sales sale) {
+    public void deleteSale(Sale sale) {
         salesRepository.delete(sale);
     }
 
     @Override
-    public Items findItem(Long id) {
+    public Item findItem(Long id) {
         return itemsRepository.findOne(id);
     }
 
     @Override
-    public Sales findSale(Long id) {
+    public Sale findSale(Long id) {
         return salesRepository.findOne(id);
     }
 
     @Override
-    public List<Items> findAllItems() {
+    public List<Item> findAllItems() {
         return itemsRepository.findAll();
     }
 
     @Override
-    public List<Sales> findAllSales() {
+    public List<Sale> findAllSales() {
         return salesRepository.findAll();
     }
 
-    public Page<Items> getItems(Integer pageNumber) {
+    public Page<Item> getItems(Integer pageNumber) {
         PageRequest request = new PageRequest(pageNumber - 1, 10, Sort.Direction.DESC, "id");
         return itemsRepository.findAll(request);
     }

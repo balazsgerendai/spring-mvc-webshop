@@ -17,7 +17,7 @@ import com.epam.jjp.model.Customer;
 import com.epam.jjp.repositories.UserRepository;
 
 @Service("usersService")
-public class UserServiceImpl implements UsersService, UserDetailsService {
+public class UserServiceImpl implements UserService, UserDetailsService {
     
     @Autowired
     private UserRepository userRepository;

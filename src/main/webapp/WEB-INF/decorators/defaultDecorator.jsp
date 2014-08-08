@@ -8,7 +8,7 @@
 <head>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="/jjp/resources/css/main.css">
+<link rel="stylesheet" href="/resources/css/main.css">
 
 <title><sitemesh:write property='title' /></title>
 <sitemesh:write property='head' />
@@ -21,12 +21,12 @@
 	<nav>
 		<ul>
 			<li class="selected"><a href="/">Home</a></li>
-			<li><a href="/jjp/sales/">Sales</a></li>
+			<li><a href="/sales/">Sales</a></li>
 			<li><a href="#">Sell</a></li>
 			<sec:authorize access="isAuthenticated()">
 				<li><a href="#">Budget(<sec:authentication property="principal.budget" />$)</a></li>
 				<li>
-					<a href="/jjp/j_spring_security_logout">
+					<a href="/j_spring_security_logout">
 						<button type="submit" class="btn btn-default">
 			 					 <i class="glyphicon glyphicon-log-out"></i> Log out
 						</button>
@@ -69,5 +69,6 @@
 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/resources/js/buyer.js"></script>
 </body>
 </html>

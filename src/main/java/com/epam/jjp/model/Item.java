@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "items")
-public class Items {
+public class Item {
     @Id
     @GeneratedValue
     private Long id;

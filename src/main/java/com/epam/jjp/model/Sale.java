@@ -8,9 +8,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @Table(name = "sales")
-public class Sales {
+public class Sale {
     @Id
     @GeneratedValue
     private Long id;
@@ -18,16 +20,16 @@ public class Sales {
     @Column(name = "sellerUsername")
     private String sellerUsername;
 
-//    @Column(name = "buyerUsername")
-//    private String buyerUsername;
-//    
+    //    @Column(name = "buyerUsername")
+    //    private String buyerUsername;
+    //    
     @Column(name = "itemId")
-    private int itemId;
+    private Long itemId;
     
+   
     @ManyToOne
-    @JoinColumn(name="buyerUsername")
-    private Customer users;
-    
+    @JoinColumn(name = "buyerUsername")
+    private Customer customer;
 
     public Long getId() {
         return id;
@@ -45,22 +47,21 @@ public class Sales {
         this.sellerUsername = sellerUsername;
     }
 
-    public int getItemId() {
+    public Long getItemId() {
         return itemId;
     }
 
-    public void setItemId(int itemId) {
+    public void setItemId(Long itemId) {
         this.itemId = itemId;
     }
-
-    public Customer getUsers() {
-        return users;
+    
+    @JsonIgnore
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setUsers(Customer users) {
-        this.users = users;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
-    
-    
-    
+
 }

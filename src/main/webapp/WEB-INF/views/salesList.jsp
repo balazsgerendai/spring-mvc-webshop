@@ -24,6 +24,7 @@
 						<th>Price</th>
 						<th>Expiration Date</th>
 						<th>Seller Name</th>
+						<th>Buy</th>
 					</tr>
 					<c:forEach var="item" items="${content}">
 						<tr>
@@ -33,6 +34,11 @@
 							<td><c:out value="${item.price}"></c:out></td>
 							<td><c:out value="${item.expirationDate}"></c:out></td>
 							<td><c:out value="${item.sellerUsername}"></c:out></td>
+							<td>
+								<button id="buy_${item.id}" type="submit" class="btn btn-default">
+									 <i class="glyphicon glyphicon-shopping-cart"></i>
+								</button>
+							</td>
 						</tr>
 					</c:forEach>
 				</table>
@@ -82,5 +88,6 @@
 		</section>
 
 	</div>
+
 </body>
 </html>

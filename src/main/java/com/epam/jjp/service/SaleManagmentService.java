@@ -5,18 +5,18 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.epam.jjp.model.Items;
-import com.epam.jjp.model.Sales;
+import com.epam.jjp.model.Item;
+import com.epam.jjp.model.Sale;
 
 public interface SaleManagmentService {
-    Items saveItem(Items item);
-    Sales saveSale(Sales sale);
-    void deleteItem(Items item);
-    void deleteSale(Sales sale);
+    Item saveItem(Item item);
+    Sale saveSale(Sale sale);
+    void deleteItem(Item item);
+    void deleteSale(Sale sale);
     
-    Items findItem(Long id);
-    Sales findSale(Long id);
-    List<Items> findAllItems();
-    List<Sales> findAllSales();
-    Page<Items> getItems(Integer pageNumber);
+    Item findItem(Long id);
+    Sale findSale(Long id);
+    List<Item> findAllItems();
+    List<Sale> findAllSales();
+    Page<Item> getItems(Integer pageNumber);
 }
