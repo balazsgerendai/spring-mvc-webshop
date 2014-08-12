@@ -8,6 +8,7 @@
 <head>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="/resources/css/main.css">
 
 <title><sitemesh:write property='title' /></title>
@@ -21,8 +22,8 @@
 	<nav>
 		<ul>
 			<li class="selected"><a href="/">Home</a></li>
-			<li><a href="/sales/">Sales</a></li>
-			<li><a href="#">Sell</a></li>
+			<li><a href="/sales/pages/1">Sales</a></li>
+			<li><a href="/sell">Sell</a></li>
 			<sec:authorize access="isAuthenticated()">
 				<li><a href="#"><sec:authentication property="name"/>(<small id="budget"><sec:authentication property="principal.budget" /></small>$)</a></li>
 				<li>
@@ -69,6 +70,7 @@
 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/resources/js/buyer.js"></script>
+	<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+	<script type="text/javascript" src="/resources/js/buyer.js"></script>
 </body>
 </html>

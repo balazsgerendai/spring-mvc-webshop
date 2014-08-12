@@ -1,6 +1,7 @@
 package com.epam.jjp.model;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 @Table(name = "items")
@@ -16,19 +23,27 @@ public class Item {
     @Id
     @GeneratedValue
     private Long id;
-
+    
+    @NotNull(message="Name can't be null!")
+    @NotEmpty(message="Name can't be empty!")
     @Column(name = "name")
     private String name;
     
     @Column(name = "sellerUsername")
     private String sellerUsername;
-
+    
+    @NotNull(message="Description can't be null!")
+    @NotEmpty(message="Description can't be empty!")
     @Column(name = "description")
     private String description;
-
-    @Column(name = "price")
-    private int price;
     
+    @NotNull(message="Price can't be null")
+    @Min(value=0, message="Minimum price must be bigger than 0")
+    @Column(name = "price")
+    private Integer price;
+    
+    @NotNull (message="Expiration date can't be null")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     @Column(name="expirationDate")
     private Date expirationDate;
     
@@ -59,11 +74,11 @@ public class Item {
         return id;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 

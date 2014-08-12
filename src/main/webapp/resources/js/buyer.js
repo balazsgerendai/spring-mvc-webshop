@@ -1,5 +1,9 @@
 $( document ).ready(function() {
-
+	 $(function() {
+		 $( "#datepicker" ).datepicker( {dateFormat: 'yy-mm-dd'} );
+	 });
+	 
+	 
 	$( 'button[id^="buy_"]' ).on( "click", function() {
 		var button = $(this);
 

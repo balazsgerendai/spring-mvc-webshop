@@ -38,7 +38,6 @@
 	</bean>
 	
 	<tx:annotation-driven transaction-manager="transactionManager"/>
-	<!-- TODO: refaktor, its in the security config as well, duplciate -->
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />

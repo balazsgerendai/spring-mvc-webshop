@@ -38,12 +38,6 @@ public class SalesController {
     @Autowired
     private UserService userService;
     
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    public String sales(Model model) {
-        
-        return "sales";
-    }
-    
     @RequestMapping(value = "/pages/{pageNumber}", method = RequestMethod.GET)
     public String getItemPage(@PathVariable Integer pageNumber, Model model) {
         Page<Item> page = saleManagmentService.getItems(pageNumber);
