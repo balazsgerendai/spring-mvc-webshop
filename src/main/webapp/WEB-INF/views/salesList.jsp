@@ -32,7 +32,7 @@
 							<td><c:out value="${item.description}"></c:out></td>
 							<td class="item_price"><c:out value="${item.price}"></c:out></td>
 							<td><c:out value="${item.expirationDate}"></c:out></td>
-							<td><c:out value="${item.sellerUsername}"></c:out></td>
+							<td><c:out value="${item.customer.username}"></c:out></td>
 							<td>
 								<c:choose>
 									<c:when test="${not item.sold}">
@@ -52,7 +52,7 @@
 			</div>
 
 			<c:url var="firstUrl" value="/sales/pages/1" />
-			<c:url var="lastUrl" value="/sales/pages/${deploymentLog.totalPages}" />
+			<c:url var="lastUrl" value="/sales/pages/${deploymentLog.totalPages == 0 ? 1 : deploymentLog.totalPages}" />
 			<c:url var="prevUrl" value="/sales/pages/${currentIndex - 1}" />
 			<c:url var="nextUrl" value="/sales/pages/${currentIndex + 1}" />
 

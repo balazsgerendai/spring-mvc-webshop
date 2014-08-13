@@ -29,8 +29,8 @@ public class Item {
     @Column(name = "name")
     private String name;
     
-    @Column(name = "sellerUsername")
-    private String sellerUsername;
+   // @Column(name = "sellerUsername")
+    //private String sellerUsername;
     
     @NotNull(message="Description can't be null!")
     @NotEmpty(message="Description can't be empty!")
@@ -51,8 +51,8 @@ public class Item {
     private Boolean sold;
     
     @ManyToOne
-    @JoinColumn(name="sellerUsername", insertable = false, updatable = false)
-    private Customer users;
+    @JoinColumn(name="sellerUsername")
+    private Customer customer;
 
     public String getName() {
         return name;
@@ -94,20 +94,12 @@ public class Item {
         this.id = id;
     }
 
-    public String getSellerUsername() {
-        return sellerUsername;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setSellerUsername(String sellerUsername) {
-        this.sellerUsername = sellerUsername;
-    }
-    
-    public Customer getUsers() {
-        return users;
-    }
-    
-    public void setUsers(Customer users) {
-        this.users = users;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public Boolean getSold() {

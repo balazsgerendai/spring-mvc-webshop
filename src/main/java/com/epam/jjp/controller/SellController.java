@@ -42,9 +42,9 @@ public class SellController {
     @RequestMapping(method = RequestMethod.POST)
     public String processSale(@Valid @ModelAttribute("itemForm") Item item, BindingResult result, Model model) {
        if(!result.hasErrors()){
-           String sellerUsername = SecurityContextHolder.getContext().getAuthentication().getName();
-           item.setSellerUsername(sellerUsername);
-           item.setSold(false);
+          Customer sellerUser = (Customer)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+          item.setCustomer(sellerUser);
+          item.setSold(false);
           saleManagmentService.saveItem(item);
           model.addAttribute("save", true);
        }

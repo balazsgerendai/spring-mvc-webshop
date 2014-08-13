@@ -13,7 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -22,24 +25,30 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class Customer implements UserDetails {
 
     private static final long serialVersionUID = -7060154441729348386L;
-
+    
     @Id
+    @NotNull(message = "Username can't be Null")
+    @NotBlank(message = "Username can't be blank")
     private String username;
     
+    @NotNull(message = " Password can't be Null")
+    @NotBlank(message = "Password can't be Blank")
     @Column(name = "password")
     private String password;
     
+    @NotNull(message = "Budget can't be Null")
+    @Min(value=0, message="Budget must be bigger than 0")
     @Column(name = "budget")
-    private int budget;
+    private Integer budget;
 
     @OneToMany(mappedBy = "customer",fetch = FetchType.EAGER)
     private List<Sale> sales = new ArrayList<Sale>();
     
-    @OneToMany(mappedBy = "users",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "customer",fetch = FetchType.EAGER)
     private List<Item> items = new ArrayList<Item>();
     
     @Column(name="enabled")
-    private boolean enabled;
+    private Boolean enabled;
 
     @OneToMany(mappedBy = "customer",fetch = FetchType.EAGER)
     private List<Authorities> entityAuthorities = new ArrayList<Authorities>();
@@ -83,11 +92,11 @@ public class Customer implements UserDetails {
         this.username = username;
     }
 
-    public int getBudget() {
+    public Integer getBudget() {
         return budget;
     }
 
-    public void setBudget(int budget) {
+    public void setBudget(Integer budget) {
         this.budget = budget;
     }
 
@@ -95,7 +104,7 @@ public class Customer implements UserDetails {
         return enabled;
     }
 
-    public void setEnabled(boolean enabled) {
+    public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
 
@@ -138,8 +147,6 @@ public class Customer implements UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
 
     public void setAuthorities(Set<GrantedAuthority> authorities) {
         this.authorities = authorities;

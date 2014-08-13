@@ -1,3 +1,4 @@
+<%@page import="org.springframework.web.context.request.SessionScope"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -5,23 +6,20 @@
 <html>
 <head>
 <title>Home</title>
+
 </head>
 <body>
 	<div id="mainContent">
 		<section id="intro">
 			<header>
-				<h2>Look at us in pictures</h2>
+				<h2>Our Sale/Item distribution is just outstanding!</h2>
+				
+				We hope you enjoy your stay at our cool webshop!
 			</header>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-				do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-				ut.</p>
+			
 		</section>
 		<section>
-			<h1>
-				Hello world! <sec:authentication property="name"/>
-			</h1>
-			
+			<div id="container"></div>
 		</section>
 
 	</div>
@@ -39,5 +37,6 @@
 			</ul>
 		</section>
 	</aside>
+	
 </body>
 </html>

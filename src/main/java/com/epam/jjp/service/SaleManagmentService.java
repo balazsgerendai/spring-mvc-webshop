@@ -14,6 +14,8 @@ public interface SaleManagmentService {
     void deleteItem(Item item);
     void deleteSale(Sale sale);
     
+    Long countItems();
+    Long countSales();
     Item findItem(Long id);
     Sale findSale(Long id);
     List<Item> findAllItems();

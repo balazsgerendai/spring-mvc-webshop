@@ -2,6 +2,8 @@ package com.epam.jjp.controller;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpSession;
+
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -57,24 +59,27 @@ public class SalesController {
     @RequestMapping(value = "buy/{id}", method = RequestMethod.POST, produces="application/json")
     @ResponseBody public String buyItem(@PathVariable Long id) throws JsonGenerationException, JsonMappingException, IOException {
         ObjectMapper mapper = new ObjectMapper();
-       
-        Customer customer = (Customer)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+      
+        Customer buyer = (Customer)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Item sellingItem = saleManagmentService.findItem(id);
-        if(customer.getBudget() < sellingItem.getPrice()){
+        Customer seller = sellingItem.getCustomer();
+        if(buyer.getBudget() < sellingItem.getPrice()){
             return "{\"status\":\"not enough money\"}";
         }
         Sale sale = new Sale();
         sale.setItemId(id);
-        sale.setSellerUsername(sellingItem.getSellerUsername());
-        sale.setCustomer(customer);
+        sale.setSellerUsername(sellingItem.getCustomer().getUsername());
+
+        sale.setCustomer(buyer);
         
         sellingItem.setSold(true);
-        
-        customer.setBudget(customer.getBudget() - sellingItem.getPrice());
+        seller.setBudget(seller.getBudget() + sellingItem.getPrice());
+        buyer.setBudget(buyer.getBudget() - sellingItem.getPrice());
         
         saleManagmentService.saveSale(sale);
         saleManagmentService.saveItem(sellingItem);
-        userService.save(customer);
+        userService.save(buyer);
+        userService.save(seller);
         
         return mapper.writeValueAsString(sale);
     }

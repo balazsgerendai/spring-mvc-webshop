@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
-<title>Sales</title>
+<title>Sell</title>
 </head>
 <body>
 	<div id="mainContent">
@@ -32,7 +32,7 @@
 				<div class="form-group ${not empty status.getFieldError('description') ? 'has-error has-feedback' : ''}">
 					<label class="col-sm-2 control-label">Description</label>
 					<div class="col-sm-10">
-							<form:textarea path="description" class="form-control" rows="3" ></form:textarea>
+							<form:textarea path="description" class="form-control" rows="3" placeholder="Description"></form:textarea>
 							<c:if test="${not empty status.getFieldError('description') }">
 								 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
 							</c:if>
@@ -41,7 +41,7 @@
 				<div class="form-group ${not empty status.getFieldError('price') ? 'has-error has-feedback' : ''}">
 					<label class="col-sm-2 control-label">Price</label>
 					<div class="col-sm-10">
-							<form:input path="price"  type="number" class="form-control" />
+							<form:input path="price"  type="number" class="form-control" placeholder="Price"/>
 							<c:if test="${not empty status.getFieldError('price') }">
 								 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
 							</c:if>

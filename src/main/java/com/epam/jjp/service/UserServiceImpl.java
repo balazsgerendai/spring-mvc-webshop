@@ -14,14 +14,17 @@ import org.springframework.stereotype.Service;
 
 import com.epam.jjp.model.Authorities;
 import com.epam.jjp.model.Customer;
+import com.epam.jjp.repositories.AuthoritiesRepository;
 import com.epam.jjp.repositories.UserRepository;
 
 @Service("userService")
 public class UserServiceImpl implements UserService, UserDetailsService {
+    @Autowired
+    private AuthoritiesRepository authRepository;
     
     @Autowired
     private UserRepository userRepository;
-
+    
     @Override
     public Customer find(String username) {
         return userRepository.findOne(username);
@@ -32,6 +35,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return userRepository.save(user);
     }
 
+    @Override
+    public Authorities save(Authorities auth) {
+        return authRepository.save(auth);
+    }
     /**
     * Returns a populated {@link UserDetails} object.
     * The username is first retrieved from the database and then mapped to
@@ -46,7 +53,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         Customer result = new Customer();
        
         result.setUsername(domainUser.getUsername());
-        result.setPassword(domainUser.getPassword().toLowerCase());
+        result.setPassword(domainUser.getPassword());
         result.setEnabled(true);
         result.setAccountNonExpired(true);
         result.setAccountNonLocked(true);
@@ -69,4 +76,5 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         }
         return authorities;
     }
+
 }

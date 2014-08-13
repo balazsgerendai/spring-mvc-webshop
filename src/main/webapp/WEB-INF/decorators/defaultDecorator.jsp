@@ -25,7 +25,7 @@
 			<li><a href="/sales/pages/1">Sales</a></li>
 			<li><a href="/sell">Sell</a></li>
 			<sec:authorize access="isAuthenticated()">
-				<li><a href="#"><sec:authentication property="name"/>(<small id="budget"><sec:authentication property="principal.budget" /></small>$)</a></li>
+				<li><a href="/user/profile"><sec:authentication property="name"/>(<small id="budget"><sec:authentication property="principal.budget" /></small>$)</a></li>
 				<li>
 					<a href="/j_spring_security_logout">
 						<button type="submit" class="btn btn-default">
@@ -71,6 +71,9 @@
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-	<script type="text/javascript" src="/resources/js/buyer.js"></script>
+	<script  type="text/javascript"  src="/resources/js/highcharts.js"></script>
+	<script src="/resources/js/exporting.js"></script>
+	
+	<script type="text/javascript" src="/resources/js/main.js"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@
 </head>
 <body>
 	<c:if test="${not empty error }">
-		<div class="erroBlock">
+		<div class="bg-danger">
 			Your login was unsuccessful. <br /> Caused:
 			${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message }
 		</div>
@@ -39,7 +39,7 @@
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<div class="checkbox">
-					<label> <input type="checkbox"> Remember me
+					<label> <input type="checkbox" name="_spring_security_remember_me"> Remember me
 					</label>
 				</div>
 			</div>
@@ -47,6 +47,9 @@
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<button type="submit" name="Submit" class="btn btn-default">Sign in</button>
+			</div>
+			<div class="col-sm-offset-8 col-sm-10">
+				Don't have an account yet? <a href="/user/register.html">Register</a>
 			</div>
 		</div>
 

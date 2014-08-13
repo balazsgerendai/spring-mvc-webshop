@@ -7,8 +7,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import com.epam.jjp.model.Customer;
 import com.epam.jjp.model.Item;
 import com.epam.jjp.model.Sale;
 import com.epam.jjp.repositories.ItemsRepository;
@@ -40,7 +42,7 @@ public class SaleManagmentServiceImpl implements SaleManagmentService {
     public void deleteSale(Sale sale) {
         salesRepository.delete(sale);
     }
-
+    
     @Override
     public Item findItem(Long id) {
         return itemsRepository.findOne(id);
@@ -63,6 +65,18 @@ public class SaleManagmentServiceImpl implements SaleManagmentService {
 
     public Page<Item> getItems(Integer pageNumber) {
         PageRequest request = new PageRequest(pageNumber - 1, 10, Sort.Direction.DESC, "id");
-        return itemsRepository.findAll(request);
+        String user = SecurityContextHolder.getContext().getAuthentication().getName();
+        
+        return itemsRepository.findItemsThatAreNotTheCurrentLoggedInUsers(user,request);
+    }
+
+    @Override
+    public Long countItems() {
+        return itemsRepository.count();
+    }
+
+    @Override
+    public Long countSales() {
+        return salesRepository.count();
     }
 }

@@ -93,12 +93,12 @@ nav {
 	position: relative;
 	margin-top: 66px;
 	padding: 44px;
-	background-color: green;
+	background-color: black;
 	/* Background-size not implemented yet */
 	-webkit-background-size: 100%;
 	-o-background-size: 100%;
 	-khtml-background-size: 100%;
-
+	color:#F0F0F0;
 	
 	/* Border-radius not implemented yet */
 	-moz-border-radius: 22px;
@@ -114,7 +114,7 @@ nav {
 	#intro h2 {
 		padding: 0 0 22px 0;
 		font-weight: normal;
-		color: #fff;
+		color: #F0F0F0;
 	}
 	
 	#intro p {
