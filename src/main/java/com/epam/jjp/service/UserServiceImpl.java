@@ -45,7 +45,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     * a {@link UserDetails} object.
     */
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        
         Customer domainUser = userRepository.findOne(username);
         if(domainUser == null){
             throw new UsernameNotFoundException(username);

@@ -10,5 +10,4 @@ import com.epam.jjp.model.Customer;
 public interface UserRepository extends JpaRepository<Customer, String>{
     
     Customer findByUsername(String username);
-    
 }

@@ -4,6 +4,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+
 <html>
 <head>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -21,7 +22,7 @@
 	</header>
 	<nav>
 		<ul>
-			<li class="selected"><a href="/">Home</a></li>
+			<li><a href="/">Home</a></li>
 			<li><a href="/sales/pages/1">Sales</a></li>
 			<li><a href="/sell">Sell</a></li>
 			<sec:authorize access="isAuthenticated()">

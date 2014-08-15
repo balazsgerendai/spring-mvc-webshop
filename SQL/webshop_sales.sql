@@ -18,28 +18,36 @@ USE `webshop`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `authorities`
+-- Table structure for table `sales`
 --
 
-DROP TABLE IF EXISTS `authorities`;
+DROP TABLE IF EXISTS `sales`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `authorities` (
-  `username` varchar(50) NOT NULL,
-  `authority` varchar(50) NOT NULL,
-  UNIQUE KEY `ix_auth_username` (`username`,`authority`),
-  CONSTRAINT `fk_authorities_users` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `sales` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sellerUsername` varchar(50) DEFAULT NULL,
+  `buyerUsername` varchar(50) DEFAULT NULL,
+  `itemId` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `username_idx` (`sellerUsername`),
+  KEY `username_idx1` (`buyerUsername`),
+  KEY `saleId_idx` (`itemId`),
+  CONSTRAINT `saleId` FOREIGN KEY (`itemId`) REFERENCES `items` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `buyerUsername` FOREIGN KEY (`buyerUsername`) REFERENCES `users` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `username` FOREIGN KEY (`sellerUsername`) REFERENCES `users` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `authorities`
+-- Dumping data for table `sales`
 --
 
-LOCK TABLES `authorities` WRITE;
-/*!40000 ALTER TABLE `authorities` DISABLE KEYS */;
-INSERT INTO `authorities` VALUES ('balazs','ROLE_USER'),('user1','ROLE_USER');
-/*!40000 ALTER TABLE `authorities` ENABLE KEYS */;
+LOCK TABLES `sales` WRITE;
+/*!40000 ALTER TABLE `sales` DISABLE KEYS */;
+INSERT INTO `sales` VALUES (1,'user1','balazs',43),(2,'balazs','user1',42),(3,'balazs','user1',41),(4,'balazs','user1',35);
+/*!40000 ALTER TABLE `sales` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-08-15 16:18:19
+-- Dump completed on 2014-08-15 16:18:20

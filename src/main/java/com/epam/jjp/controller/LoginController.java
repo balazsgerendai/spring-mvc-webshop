@@ -13,7 +13,6 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(ModelMap model) {
-        LOGGER.info("in login");
 
         return "login";
     }

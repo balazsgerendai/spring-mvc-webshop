@@ -26,8 +26,9 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(300) NOT NULL,
   `enabled` tinyint(1) NOT NULL,
+  `budget` int(50) NOT NULL DEFAULT '100000',
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -38,7 +39,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('balazs','1234',1);
+INSERT INTO `users` VALUES ('balazs','$2a$10$rIrkl9jYlJbUNJpWBzvNLeVXNzYjkZphuTacp1B3mEje9zz/sBW6e',1,183000),('user1','$2a$10$5S7G0YKrN71P9Q6K5q3jW.MtFWRrIzEhzYSJ8i9k4Rrep5P0inOWe',1,1199555);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-07-30 16:51:14
+-- Dump completed on 2014-08-15 16:18:20
