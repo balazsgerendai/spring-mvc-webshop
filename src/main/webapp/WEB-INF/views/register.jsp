@@ -33,7 +33,7 @@
 				class="form-group ${not empty status.getFieldError('password') ? 'has-error has-feedback' : ''}">
 				<label class="col-sm-2 control-label">Password</label>
 				<div class="col-sm-10">
-					<form:input path="password" type="text" class="form-control"
+					<form:input path="password" type="password" class="form-control"
 						placeholder="Password" />
 					<c:if test="${not empty status.getFieldError('password') }">
 						<span class="glyphicon glyphicon-remove form-control-feedback"></span>

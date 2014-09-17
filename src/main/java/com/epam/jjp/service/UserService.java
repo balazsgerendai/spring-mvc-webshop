@@ -7,4 +7,5 @@ public interface UserService {
     Customer save(Customer user);
     Customer find(String username);
     Authorities save(Authorities auth);
+    Boolean exists(String id);
 }

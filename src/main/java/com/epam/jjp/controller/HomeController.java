@@ -7,6 +7,7 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.http.HttpResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,4 +46,5 @@ public class HomeController {
 
         return "{\"type\" : \"pie\",\"name\" : \"Sales and Items\",\"data\" : [[\"Items\","+itemCount+"],[  \"Sales\","+saleCount+"]]}";
     }
+
 }

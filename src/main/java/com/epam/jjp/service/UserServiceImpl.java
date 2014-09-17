@@ -76,4 +76,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return authorities;
     }
 
+    @Override
+    public Boolean exists(String id) {
+        return userRepository.exists(id);
+    }
+
 }
