@@ -37,7 +37,6 @@ public class UserController {
 
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Customer customer = userService.find(username);
-        System.out.println("Teszt" + customer.getSales());
         model.addAttribute("sales", customer.getSales());
 
         return "profile";

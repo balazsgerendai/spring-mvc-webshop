@@ -35,10 +35,20 @@
 							<td><c:out value="${item.customer.username}"></c:out></td>
 							<td>
 								<c:choose>
-									<c:when test="${not item.sold}">
-										<button id="buy_${item.id}" type="submit"
+									<c:when test="${not item.sold and item.customer.username ne loggedInUser.username}">
+										<button id="buy_${item.id}" type="button"
 											class="btn btn-default">
 												$
+										</button>
+									</c:when>
+									<c:when test="${item.customer.username eq loggedInUser.username}">
+										<button id="edit_${item.id}" type="button"
+											class="btn btn-default">
+												Edit
+										</button>
+										<button id="delete_${item.id}" type="button"
+											class="btn btn-default">
+												Delete
 										</button>
 									</c:when>
 									<c:otherwise>

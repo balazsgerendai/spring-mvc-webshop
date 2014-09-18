@@ -3,12 +3,14 @@ package com.epam.jjp.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -29,8 +31,8 @@ public class Item {
     @Column(name = "name")
     private String name;
     
-   // @Column(name = "sellerUsername")
-    //private String sellerUsername;
+    @Column(name = "sellerUsername",insertable=false, updatable=false)
+    private String sellerUsername;
     
     @NotNull(message="Description can't be null!")
     @NotEmpty(message="Description can't be empty!")
@@ -54,6 +56,9 @@ public class Item {
     @JoinColumn(name="sellerUsername")
     private Customer customer;
 
+    @OneToOne(mappedBy = "item", cascade=CascadeType.REMOVE)
+    private Sale sale;
+    
     public String getName() {
         return name;
     }
@@ -86,6 +91,14 @@ public class Item {
         return expirationDate;
     }
 
+    public Sale getSale() {
+        return sale;
+    }
+
+    public void setSale(Sale sale) {
+        this.sale = sale;
+    }
+
     public void setExpirationDate(Date expirationDate) {
         this.expirationDate = expirationDate;
     }
@@ -108,6 +121,20 @@ public class Item {
 
     public void setSold(Boolean sold) {
         this.sold = sold;
+    }
+
+    public String getSellerUsername() {
+        return sellerUsername;
+    }
+
+    public void setSellerUsername(String sellerUsername) {
+        this.sellerUsername = sellerUsername;
+    }
+
+    @Override
+    public String toString() {
+        return "Item [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", expirationDate=" + expirationDate
+                + ", sold=" + sold + ", customer=" + customer + "]";
     }
     
 }

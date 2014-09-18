@@ -17,7 +17,7 @@ $( document ).ready(function() {
 					alert("You don't have enough money to buy it!");
 				}else{
 					alert( "Sale Id: " + item.id +"\n"+
-							"Seller:" + item.sellerUsername);
+							"Seller: " + item.sellerUsername);
 					var budget = parseInt($("#budget").html());
 					var itemPrice = parseInt(button.closest('tr').find(".item_price").html());
 					button.parent().html("SOLD");
@@ -28,6 +28,32 @@ $( document ).ready(function() {
 				}
 			});
 	});
+	
+	$( 'button[id^="edit_"]' ).on( "click", function() {
+		var button = $(this);
+		var id = button.attr("id").replace(/\D/g,'');
+		
+		window.location.href = "/sales/edit/"+id;
+	});
+	
+	$( 'button[id^="delete_"]' ).on( "click", function() {
+		var button = $(this);
+		var id = button.attr("id").replace(/\D/g,'');
+		
+		$.ajax({
+			type: "POST",
+			url: "/sales/delete/"+id,
+			data: { itemId: id}
+		}).done(function( item ) {
+			if(item.status == "OK"){
+				alert("Delete successfull");
+				button.parent().parent().remove();
+			}else{
+				alert("Delete unsuccessfull");
+			}
+		});
+	});
+	
 	   $(function() {
 	        $.getJSON('/home/chart', function(json) {
 	        	  $('#container').highcharts({

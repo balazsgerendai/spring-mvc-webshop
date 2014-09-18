@@ -58,6 +58,7 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-10">
+							<form:input path="sellerUsername" type="hidden"/>
 							<button type="submit" class="btn btn-primary">Submit</button>
 					</div>
 				</div>

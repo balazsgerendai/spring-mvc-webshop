@@ -65,9 +65,8 @@ public class SaleManagmentServiceImpl implements SaleManagmentService {
 
     public Page<Item> getItems(Integer pageNumber) {
         PageRequest request = new PageRequest(pageNumber - 1, 10, Sort.Direction.DESC, "id");
-        String user = SecurityContextHolder.getContext().getAuthentication().getName();
         
-        return itemsRepository.findItemsThatAreNotTheCurrentLoggedInUsers(user,request);
+        return itemsRepository.findAll(request);
     }
 
     @Override

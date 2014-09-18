@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     * @param roles {@link String} of roles
     * @return list of granted authorities
     */
-    public Set<GrantedAuthority> getGrantedAuthorities(List<Authorities> userAuthorities) {
+    public Set<GrantedAuthority> getGrantedAuthorities(Set<Authorities> userAuthorities) {
         Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
         for(Authorities authority : userAuthorities){
             authorities.add(new SimpleGrantedAuthority(authority.getAuthority()));

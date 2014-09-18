@@ -1,11 +1,9 @@
 package com.epam.jjp.model;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -42,16 +40,16 @@ public class Customer implements UserDetails {
     private Integer budget;
 
     @OneToMany(mappedBy = "customer",fetch = FetchType.EAGER)
-    private List<Sale> sales = new ArrayList<Sale>();
+    private Set<Sale> sales = new HashSet<Sale>();
     
     @OneToMany(mappedBy = "customer",fetch = FetchType.EAGER)
-    private List<Item> items = new ArrayList<Item>();
+    private Set<Item> items = new HashSet<Item>();
     
     @Column(name="enabled")
     private Boolean enabled;
 
     @OneToMany(mappedBy = "customer",fetch = FetchType.EAGER)
-    private List<Authorities> entityAuthorities = new ArrayList<Authorities>();
+    private Set<Authorities> entityAuthorities = new HashSet<Authorities>();
 
     
     @Transient private Set<GrantedAuthority> authorities;
@@ -60,27 +58,27 @@ public class Customer implements UserDetails {
     @Transient private boolean credentialsNonExpired;
 
     
-    public List<Item> getItems() {
+    public Set<Item> getItems() {
         return items;
     }
     
-    public void setItems(List<Item> items) {
+    public void setItems(Set<Item> items) {
         this.items = items;
     }
 
-    public List<Sale> getSales() {
+    public Set<Sale> getSales() {
         return sales;
     }
 
-    public List<Authorities> getEntityAuthorities() {
+    public Set<Authorities> getEntityAuthorities() {
         return entityAuthorities;
     }
 
-    public void setEntityAuthorities(List<Authorities> entityAuthorities) {
+    public void setEntityAuthorities(Set<Authorities> entityAuthorities) {
         this.entityAuthorities = entityAuthorities;
     }
 
-    public void setSales(List<Sale> sales) {
+    public void setSales(Set<Sale> sales) {
         this.sales = sales;
     }
 

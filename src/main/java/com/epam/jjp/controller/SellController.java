@@ -40,7 +40,7 @@ public class SellController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String processSale(@Valid @ModelAttribute("itemForm") Item item, BindingResult result, Model model) {
+    public String processItem(@Valid @ModelAttribute("itemForm") Item item, BindingResult result, Model model) {
        if(!result.hasErrors()){
           Customer sellerUser = (Customer)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
           item.setCustomer(sellerUser);
