@@ -16,7 +16,6 @@ public class LoginController {
 
         return "login";
     }
-
     @RequestMapping(value = "/loginFailed", method = RequestMethod.GET)
     public String loginFailed(ModelMap model) {
         LOGGER.info("Login failed");
